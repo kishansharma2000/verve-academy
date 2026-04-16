@@ -1,0 +1,110 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const allPosts = await Astro.glob('../../content/blog/*.md');
+const sortedPosts = allPosts.sort((a, b) => 
+  new Date(b.frontmatter.pubDate).getTime() - new Date(a.frontmatter.pubDate).getTime()
+);
+const featuredPost = sortedPosts.find(post => post.frontmatter.featured);
+const otherPosts = sortedPosts.filter(post => !post.frontmatter.featured);
+---
+
+<Layout title="Blog — Vervve Academy">
+  <Navbar />
+  
+  <main>
+    <section class="bg-off-white py-28 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">BLOG</p>
+        <h1 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-ink tracking-tight leading-[1.6] mb-12">
+          Insights & Updates
+        </h1>
+
+        {featuredPost && (
+          <a href={`/blog/${featuredPost.frontmatter.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} class="group block mb-16">
+            <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden border border-border">
+              <div class="aspect-[4/3] lg:aspect-auto overflow-hidden">
+                <img 
+                  src={featuredPost.frontmatter.image} 
+                  alt={featuredPost.frontmatter.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div class="p-8 lg:p-12 flex flex-col justify-center">
+                <div class="flex items-center gap-4 mb-4">
+                  <span class="text-[11px] font-medium uppercase tracking-widest text-muted">
+                    {featuredPost.frontmatter.category}
+                  </span>
+                  <span class="text-muted text-sm">{featuredPost.frontmatter.readTime}</span>
+                </div>
+                <h2 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight leading-[1.4] mb-4 group-hover:text-muted transition-colors">
+                  {featuredPost.frontmatter.title}
+                </h2>
+                <p class="text-muted text-base leading-relaxed mb-6">
+                  {featuredPost.frontmatter.description}
+                </p>
+                <div class="flex items-center gap-3">
+                  <span class="text-sm text-muted">{featuredPost.frontmatter.author}</span>
+                  <span class="text-muted">·</span>
+                  <span class="text-sm text-muted">{new Date(featuredPost.frontmatter.pubDate).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                </div>
+              </div>
+            </article>
+          </a>
+        )}
+
+        <div class="border-t border-border pt-12">
+          <h3 class="text-[11px] font-medium uppercase tracking-widest text-muted mb-8">More Articles</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {otherPosts.map((post) => (
+              <a href={`/blog/${post.frontmatter.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} class="group">
+                <article class="bg-white rounded-2xl overflow-hidden border border-border h-full flex flex-col">
+                  <div class="aspect-[16/10] overflow-hidden">
+                    <img 
+                      src={post.frontmatter.image} 
+                      alt={post.frontmatter.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-6 flex flex-col flex-1">
+                    <div class="flex items-center gap-3 mb-3">
+                      <span class="text-[11px] font-medium uppercase tracking-widest text-muted">
+                        {post.frontmatter.category}
+                      </span>
+                      <span class="text-muted text-sm">{post.frontmatter.readTime}</span>
+                    </div>
+                    <h3 class="font-sans font-medium text-lg text-ink leading-snug mb-3 group-hover:text-muted transition-colors">
+                      {post.frontmatter.title}
+                    </h3>
+                    <p class="text-muted text-sm leading-relaxed mb-4 line-clamp-2 flex-1">
+                      {post.frontmatter.description}
+                    </p>
+                    <div class="flex items-center gap-2 text-sm text-muted">
+                      <span>{new Date(post.frontmatter.pubDate).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

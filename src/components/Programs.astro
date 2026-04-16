@@ -1,0 +1,81 @@
+---
+const programs = [
+  {
+    number: '01',
+    name: 'Diploma in Airport Management',
+    duration: '1 Year',
+    description:
+      'Get access to one of the top aviation management courses in Bangalore. Learn airport operations, management principles, and industry best practices.',
+  },
+  {
+    number: '02',
+    name: 'Diploma in Cabin Crew & Airport Ground Operations',
+    duration: '1 Year',
+    description:
+      'Kick-start your career in the cabin crew! Comprehensive training in safety, service, and ground operations for the aviation industry.',
+  },
+  {
+    number: '03',
+    name: 'Certification Course in Airline Customer Service',
+    duration: '6 Months',
+    description:
+      'Get exposure to frontline airline customer service techniques and flight attendant skills. Perfect for aspiring airline professionals.',
+  },
+  {
+    number: '04',
+    name: 'Corporate Training',
+    duration: 'Custom',
+    description:
+      'Professional development programs for airline and aviation industry staff. Tailored training solutions for corporate clients.',
+  },
+];
+---
+
+<section class="bg-white py-28 px-6">
+  <div class="max-w-6xl mx-auto">
+
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-20 gap-6">
+      <div>
+        <p class="label mb-6">WHAT WE OFFER</p>
+        <h2 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-ink tracking-tight lg:leading-[1.3] max-w-2xl">
+          Programs Built For Every Stage
+        </h2>
+      </div>
+      <p class="text-muted text-sm leading-relaxed max-w-xs md:text-right">
+        Industry-aligned courses designed with airline partners — so you
+        graduate ready to work, not just certified.
+      </p>
+    </div>
+
+    <div class="border-t border-border">
+      {programs.map((program) => (
+        <div
+          class="group border-b border-border py-8 flex items-start gap-8 cursor-pointer"
+        >
+          <span class="text-[11px] font-medium text-muted tracking-widest mt-1 w-8 shrink-0">
+            {program.number}
+          </span>
+
+          <div class="flex-1 min-w-0">
+            <div class="flex flex-wrap items-baseline gap-x-3 gap-y-2">
+              <span class="text-xl md:text-2xl font-medium text-ink group-hover:text-muted transition-colors duration-200">
+                {program.name}
+              </span>
+              <span class="border border-border text-muted text-[10px] px-2 py-0.5 uppercase tracking-widest inline-block shrink-0">
+                {program.duration}
+              </span>
+            </div>
+            <p class="text-muted text-sm mt-2 max-w-lg leading-relaxed">
+              {program.description}
+            </p>
+          </div>
+
+          <span class="text-ink text-lg mt-1 shrink-0 group-hover:translate-x-1 transition-transform duration-200">
+            &rarr;
+          </span>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

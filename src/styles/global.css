@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, :host {
+    font-family: 'Figtree', system-ui, sans-serif !important;
+    scroll-behavior: smooth;
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Figtree', system-ui, sans-serif;
+    background: #ffffff;
+    color: #0A0A0A;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #0A0A0A;
+  }
+
+  #root {
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .label {
+    @apply text-[11px] font-medium uppercase;
+    color: #666666;
+    letter-spacing: 0.25em;
+  }
+
+  .btn-dark {
+    @apply inline-block text-white font-medium px-8 py-3.5 text-sm transition-all duration-200 rounded-full;
+    background-color: #0A0A0A;
+  }
+
+  .btn-dark:hover {
+    background-color: #27272a;
+  }
+
+  .btn-outline-dark {
+    @apply inline-block font-medium px-8 py-3.5 text-sm transition-all duration-200 rounded-full;
+    border: 1px solid #0A0A0A;
+    color: #0A0A0A;
+  }
+
+  .btn-outline-dark:hover {
+    background-color: #0A0A0A;
+    color: #ffffff;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .marquee-track {
+    animation: marquee 30s linear infinite;
+  }
+
+  @media (max-width: 640px) {
+    .marquee-track {
+      animation: marquee 10s linear infinite;
+    }
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}

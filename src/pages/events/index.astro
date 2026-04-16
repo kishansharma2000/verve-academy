@@ -1,0 +1,170 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const allEvents = await Astro.glob('../../content/events/*.md');
+const upcomingEvents = allEvents
+  .filter(event => new Date(event.frontmatter.date) >= new Date())
+  .sort((a, b) => new Date(a.frontmatter.date).getTime() - new Date(b.frontmatter.date).getTime());
+const pastEvents = allEvents
+  .filter(event => new Date(event.frontmatter.date) < new Date())
+  .sort((a, b) => new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime());
+const featuredEvents = upcomingEvents.filter(event => event.frontmatter.featured);
+const otherUpcoming = upcomingEvents.filter(event => !event.frontmatter.featured);
+---
+
+<Layout title="Events — Vervve Academy">
+  <Navbar />
+  
+  <main>
+    <section class="bg-off-white py-28 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">EVENTS</p>
+        <h1 class="font-sans font-normal text-4xl md:text-5xl lg:text-6xl text-ink tracking-tight leading-[1.6] mb-12">
+          Upcoming Events
+        </h1>
+
+        {featuredEvents.length > 0 && (
+          <div class="space-y-8 mb-16">
+            {featuredEvents.map((event) => (
+              <a href={`/events/${event.frontmatter.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} class="group block">
+                <article class="grid grid-cols-1 lg:grid-cols-2 gap-8 bg-white rounded-2xl overflow-hidden border border-border">
+                  <div class="aspect-[4/3] lg:aspect-auto overflow-hidden">
+                    <img 
+                      src={event.frontmatter.image} 
+                      alt={event.frontmatter.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div class="p-8 lg:p-12 flex flex-col justify-center">
+                    <div class="flex items-center gap-4 mb-4">
+                      <span class="bg-ink text-white text-xs px-3 py-1 rounded-full">Featured</span>
+                    </div>
+                    <h2 class="font-sans font-normal text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight leading-[1.4] mb-4 group-hover:text-muted transition-colors">
+                      {event.frontmatter.title}
+                    </h2>
+                    <div class="flex flex-wrap gap-4 text-muted text-sm mb-4">
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        {new Date(event.frontmatter.date).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        {event.frontmatter.time}
+                      </span>
+                    </div>
+                    <p class="text-muted text-base leading-relaxed mb-6">
+                      {event.frontmatter.description}
+                    </p>
+                    <span class="inline-flex items-center gap-2 text-sm font-medium text-ink group-hover:gap-3 transition-all">
+                      Register Now
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </span>
+                  </div>
+                </article>
+              </a>
+            ))}
+          </div>
+        )}
+
+        {otherUpcoming.length > 0 && (
+          <div class="mb-16">
+            <h2 class="text-[11px] font-medium uppercase tracking-widest text-muted mb-8">More Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {otherUpcoming.map((event) => (
+                <a href={`/events/${event.frontmatter.title.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')}`} class="group">
+                  <article class="bg-white rounded-2xl overflow-hidden border border-border h-full flex flex-col">
+                    <div class="aspect-[16/10] overflow-hidden">
+                      <img 
+                        src={event.frontmatter.image} 
+                        alt={event.frontmatter.title}
+                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                      <div class="flex flex-wrap gap-3 text-muted text-xs mb-3">
+                        <span>{new Date(event.frontmatter.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span>
+                        <span>·</span>
+                        <span>{event.frontmatter.time}</span>
+                      </div>
+                      <h3 class="font-sans font-medium text-lg text-ink leading-snug mb-3 group-hover:text-muted transition-colors">
+                        {event.frontmatter.title}
+                      </h3>
+                      <p class="text-muted text-sm leading-relaxed flex-1 line-clamp-2">
+                        {event.frontmatter.description}
+                      </p>
+                      <p class="text-xs text-muted mt-4 flex items-center gap-1">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        {event.frontmatter.location}
+                      </p>
+                    </div>
+                  </article>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {upcomingEvents.length === 0 && (
+          <div class="text-center py-20">
+            <p class="text-muted text-lg">No upcoming events at the moment.</p>
+            <p class="text-muted text-sm mt-2">Check back soon for new events!</p>
+          </div>
+        )}
+
+        {pastEvents.length > 0 && (
+          <div class="border-t border-border pt-16">
+            <h2 class="text-[11px] font-medium uppercase tracking-widest text-muted mb-8">Past Events</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {pastEvents.map((event) => (
+                <div class="opacity-60">
+                  <article class="bg-white rounded-2xl overflow-hidden border border-border h-full flex flex-col">
+                    <div class="aspect-[16/10] overflow-hidden grayscale">
+                      <img 
+                        src={event.frontmatter.image} 
+                        alt={event.frontmatter.title}
+                        class="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                      <div class="flex gap-3 text-muted text-xs mb-3">
+                        <span>{new Date(event.frontmatter.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+                      </div>
+                      <h3 class="font-sans font-medium text-lg text-ink leading-snug">
+                        {event.frontmatter.title}
+                      </h3>
+                    </div>
+                  </article>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

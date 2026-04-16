@@ -1,0 +1,118 @@
+---
+const navLinks = [
+  { label: 'Home', href: '/' },
+  { label: 'Programs', href: '/#programs' },
+  { label: 'Events', href: '/events' },
+  { label: 'Blog', href: '/blog' },
+  { label: 'Contact', href: '/#contact' },
+];
+---
+
+<nav id="navbar" class="fixed top-2 left-2 right-2 z-50 bg-white/80 backdrop-blur-md border border-black/5 rounded-xl transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="flex items-center justify-between h-[54px]">
+
+      <a
+        href="/"
+        class="font-sans font-normal text-base [letter-spacing:0.25em] uppercase text-ink select-none"
+      >
+        VERVVE
+      </a>
+
+      <ul class="hidden md:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <li key={link.label}>
+            <a
+              href={link.href}
+              class="text-[13px] font-medium text-muted hover:text-ink tracking-wide transition-colors duration-150"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <div class="hidden md:block">
+        <a
+          href="#apply"
+          class="inline-block bg-ink text-white text-sm px-6 py-2 rounded-full transition-colors duration-200 hover:bg-zinc-700"
+        >
+          Apply Now
+        </a>
+      </div>
+
+      <button
+        id="menu-toggle"
+        aria-label="Toggle menu"
+        class="md:hidden flex flex-col justify-center items-center gap-[5px] w-8 h-8 focus:outline-none"
+      >
+        <span id="bar1" class="block w-5 h-px bg-ink transition-all duration-300 origin-center"></span>
+        <span id="bar2" class="block w-5 h-px bg-ink transition-all duration-300"></span>
+        <span id="bar3" class="block w-5 h-px bg-ink transition-all duration-300 origin-center"></span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0"
+  >
+    <div class="px-4 min-h-[calc(100vh-70px)] flex flex-col py-6">
+      <div class="flex-1 flex items-center justify-center">
+        <ul class="flex flex-col items-center gap-6">
+          {navLinks.map((link) => (
+            <li key={link.label}>
+              <a
+                href={link.href}
+                class="block text-lg font-medium text-ink hover:text-muted tracking-wide transition-colors duration-150"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div class="pt-6 border-t border-black/5">
+        <a
+          href="#apply"
+          class="block w-full bg-ink text-white text-center text-base font-medium px-6 py-3.5 rounded-full transition-colors duration-200 hover:bg-zinc-700"
+        >
+          Apply Now
+        </a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navbar = document.getElementById('navbar');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  menuToggle?.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    if (menuOpen) {
+      mobileMenu?.classList.add('max-h-[calc(100vh-60px)]');
+      mobileMenu?.classList.remove('max-h-0');
+      navbar?.classList.remove('border-black/5');
+      navbar?.classList.add('border-black/10', 'rounded-2xl');
+      bar1?.classList.add('rotate-45', 'translate-y-[6px]');
+      bar2?.classList.add('opacity-0', 'scale-x-0');
+      bar3?.classList.add('-rotate-45', '-translate-y-[6px]');
+      document.body.style.overflow = 'hidden';
+    } else {
+      mobileMenu?.classList.remove('max-h-[calc(100vh-60px)]');
+      mobileMenu?.classList.add('max-h-0');
+      navbar?.classList.remove('border-black/10', 'rounded-2xl');
+      navbar?.classList.add('border-black/5');
+      bar1?.classList.remove('rotate-45', 'translate-y-[6px]');
+      bar2?.classList.remove('opacity-0', 'scale-x-0');
+      bar3?.classList.remove('-rotate-45', '-translate-y-[6px]');
+      document.body.style.overflow = '';
+    }
+  });
+</script>
