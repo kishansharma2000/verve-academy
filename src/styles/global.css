@@ -68,6 +68,15 @@
     color: #ffffff;
   }
 
+  .btn-aviation {
+    @apply inline-block text-white font-medium px-8 py-3.5 text-sm transition-all duration-200 rounded-full;
+    background-color: #0066CC;
+  }
+
+  .btn-aviation:hover {
+    background-color: #0052A3;
+  }
+
   @keyframes marquee {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }

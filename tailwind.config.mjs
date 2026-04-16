@@ -14,6 +14,8 @@ export default {
         muted: '#666666',
         border: '#E5E5E5',
         'off-white': '#F7F7F5',
+        aviation: '#0066CC',
+        'aviation-light': '#E6F0FA',
       },
     },
   },
