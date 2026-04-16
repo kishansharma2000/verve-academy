@@ -1,17 +1,16 @@
 ---
 const programs = [
-  "Diploma in Airport Management",
-  "Diploma in Cabin Crew & Airport",
-  "Certification Course in Airline",
-  "Corporate Training",
+  { label: "Diploma in Airport Management", href: "/programs/diploma-in-airport-management" },
+  { label: "Diploma in Cabin Crew & Airport Ground Operations", href: "/programs/diploma-in-cabin-crew" },
+  { label: "Certification Course in Airline Customer Service", href: "/programs/certification-in-airline-customer-service" },
+  { label: "Corporate Training", href: "/programs/corporate-training" },
 ];
 
 const quickLinks = [
-  { label: "About Us", href: "#about" },
-  { label: "Admissions", href: "#admissions" },
-  { label: "Campus Life", href: "#campus" },
-  { label: "Careers", href: "#careers" },
-  { label: "Blog", href: "#blog" },
+  { label: "Home", href: "/" },
+  { label: "About Us", href: "/#about" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Contact Us", href: "/#contact" },
 ];
 ---
 
@@ -25,7 +24,7 @@ const quickLinks = [
           VERVVE
         </span>
         <p class="text-white/40 text-sm mt-3 max-w-xs leading-relaxed">
-          India's premier aviation institute. Producing world-class pilots since 2010.
+          We are here to make your future dreams come true. Vervve Academy aims at providing top-notch aviation training that is beyond regular academia.
         </p>
         <div class="mt-8 flex gap-5">
           <a href="#" aria-label="X (Twitter)" class="text-white/30 hover:text-white transition-colors">
@@ -53,13 +52,13 @@ const quickLinks = [
 
       <div>
         <p class="text-[11px] uppercase tracking-widest text-white/30 mb-5">
-          PROGRAMS
+          OUR COURSES
         </p>
         <ul class="space-y-3">
           {programs.map((p) => (
-            <li key={p}>
-              <a href="#programs" class="text-sm text-white/60 hover:text-white transition-colors">
-                {p}
+            <li key={p.label}>
+              <a href={p.href} class="text-sm text-white/60 hover:text-white transition-colors">
+                {p.label}
               </a>
             </li>
           ))}
@@ -83,27 +82,28 @@ const quickLinks = [
 
       <div>
         <p class="text-[11px] uppercase tracking-widest text-white/30 mb-5">
-          CONTACT
+          CONTACT INFO
         </p>
         <address class="not-italic space-y-3 text-sm text-white/60">
           <p class="leading-relaxed">
-            Vervve Aviation Academy<br />
-            Plot 42, Sector 15, Dwarka<br />
-            New Delhi — 110078, India
+            No.520/432, Pyramid north square,<br />
+            4th Floor, New airport road,<br />
+            Yelahanka, Bangalore — 562157, Karnataka
           </p>
           <p>
-            <a href="tel:+911140001234" class="hover:text-white transition-colors">
-              +91 11 4000 1234
+            <a href="tel:+919620001901" class="hover:text-white transition-colors">
+              +91 9620001901
             </a>
           </p>
           <p>
-            <a href="mailto:admissions@vervve.in" class="hover:text-white transition-colors">
-              admissions@vervve.in
+            <a href="mailto:enquiry@vervveacademy.com" class="hover:text-white transition-colors">
+              enquiry@vervveacademy.com
             </a>
           </p>
         </address>
       </div>
 
+      </div>
     </div>
   </div>
 

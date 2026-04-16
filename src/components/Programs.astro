@@ -3,6 +3,7 @@ const programs = [
   {
     number: '01',
     name: 'Diploma in Airport Management',
+    slug: 'diploma-in-airport-management',
     duration: '1 Year',
     description:
       'Get access to one of the top aviation management courses in Bangalore. Learn airport operations, management principles, and industry best practices.',
@@ -10,6 +11,7 @@ const programs = [
   {
     number: '02',
     name: 'Diploma in Cabin Crew & Airport Ground Operations',
+    slug: 'diploma-in-cabin-crew',
     duration: '1 Year',
     description:
       'Kick-start your career in the cabin crew! Comprehensive training in safety, service, and ground operations for the aviation industry.',
@@ -17,6 +19,7 @@ const programs = [
   {
     number: '03',
     name: 'Certification Course in Airline Customer Service',
+    slug: 'certification-in-airline-customer-service',
     duration: '6 Months',
     description:
       'Get exposure to frontline airline customer service techniques and flight attendant skills. Perfect for aspiring airline professionals.',
@@ -24,6 +27,7 @@ const programs = [
   {
     number: '04',
     name: 'Corporate Training',
+    slug: 'corporate-training',
     duration: 'Custom',
     description:
       'Professional development programs for airline and aviation industry staff. Tailored training solutions for corporate clients.',
@@ -49,8 +53,9 @@ const programs = [
 
     <div class="border-t border-border">
       {programs.map((program) => (
-        <div
-          class="group border-b border-border py-8 flex items-start gap-8 cursor-pointer"
+        <a
+          href={`/programs/${program.slug}`}
+          class="group border-b border-border py-8 flex items-start gap-8 cursor-pointer no-underline"
         >
           <span class="text-[11px] font-medium text-muted tracking-widest mt-1 w-8 shrink-0">
             {program.number}
@@ -73,7 +78,7 @@ const programs = [
           <span class="text-ink text-lg mt-1 shrink-0 group-hover:translate-x-1 transition-transform duration-200">
             &rarr;
           </span>
-        </div>
+        </a>
       ))}
     </div>
 

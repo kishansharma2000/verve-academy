@@ -1,0 +1,222 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navbar from '../../components/Navbar.astro';
+import Footer from '../../components/Footer.astro';
+import CTA from '../../components/CTA.astro';
+
+const program = {
+  title: 'Certification Course in Airline Customer Service',
+  subtitle: 'Aviation',
+  duration: '6 Months',
+  studyHours: '300 Hours',
+  semesters: '2 Semesters',
+  eligibility: '12th Standard',
+  overview: `Drive outstanding customer service and ground handling with the winning combination of knowledge, skills, and attitude. Get exposure to frontline airline customer service techniques, flight attendant skills, and reservation sales.`,
+  courseFormat: `This course is available in printed Textbook format. This course requires approximately 300 hours of study, to be completed in 2 Semesters.`,
+  learningObjectives: [
+    'Master frontline airline customer service techniques',
+    'Develop flight attendant skills and professional demeanor',
+    'Learn ticket reservation and sales techniques',
+    'Understand check-in and gate operations',
+    'Handle passenger complaints and difficult situations',
+    'Learn about the latest technological innovations',
+    'Provide superior customer service in demanding environments',
+    'Understand how social media is changing airline customer service',
+  ],
+  recommendedFor: [
+    'Aspiring airline customer service agents',
+    'Check-in and gate agents',
+    'Ticket reservation staff',
+    'Ground handling personnel',
+    'Travel industry professionals',
+    'Future airline professionals',
+  ],
+};
+
+const otherPrograms = [
+  { name: 'Diploma in Airport Management', slug: 'diploma-in-airport-management' },
+  { name: 'Diploma in Cabin Crew & Airport Ground Operations', slug: 'diploma-in-cabin-crew' },
+  { name: 'Corporate Training', slug: 'corporate-training' },
+];
+---
+
+<Layout 
+  title={`${program.title} | Vervve Academy`}
+  description="Get certified in airline customer service. 6-month program covering check-in, gate operations, reservations & passenger handling. Enroll now for aviation career."
+>
+  <Navbar />
+  
+  <main>
+    <article class="bg-white">
+      <header class="max-w-3xl mx-auto px-6 pt-16 pb-10">
+        <a href="/#programs" class="inline-flex items-center gap-2 text-muted text-sm hover:text-ink transition-colors mb-8">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Programs
+        </a>
+        
+        <div class="flex items-center gap-4 mb-6">
+          <span class="text-[11px] font-medium uppercase tracking-widest text-muted">
+            {program.subtitle}
+          </span>
+          <span class="text-muted">·</span>
+          <span class="text-muted text-sm">{program.duration}</span>
+        </div>
+        
+        <h1 class="font-sans font-normal text-3xl md:text-4xl lg:text-5xl text-ink tracking-tight leading-[1.3] lg:leading-[1.3] mb-6">
+          {program.title}
+        </h1>
+        
+        <p class="text-muted text-lg leading-relaxed mb-8">
+          {program.overview}
+        </p>
+        
+        <div class="flex flex-wrap gap-8 pb-8 border-b border-border">
+          <div class="text-left">
+            <p class="text-xl font-semibold text-ink">{program.duration}</p>
+            <p class="text-xs text-muted mt-1">Duration</p>
+          </div>
+          <div class="text-left">
+            <p class="text-xl font-semibold text-ink">{program.studyHours}</p>
+            <p class="text-xs text-muted mt-1">Study Hours</p>
+          </div>
+          <div class="text-left">
+            <p class="text-xl font-semibold text-ink">{program.semesters}</p>
+            <p class="text-xs text-muted mt-1">Semesters</p>
+          </div>
+          <div class="text-left">
+            <p class="text-xl font-semibold text-ink">{program.eligibility}</p>
+            <p class="text-xs text-muted mt-1">Eligibility</p>
+          </div>
+        </div>
+      </header>
+
+      <div class="max-w-3xl mx-auto px-6 pb-12">
+        <div class="prose-program space-y-20">
+          <section>
+            <h2>Course Format</h2>
+            <p>{program.courseFormat}</p>
+          </section>
+
+          <section>
+            <h2>What You'll Learn</h2>
+            <ul>
+              {program.learningObjectives.map((objective) => (
+                <li>
+                  <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{objective}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <h2>Career Opportunities</h2>
+            <p>Work as ticket reservation staff, check-in and gate agents, or passenger service agent in one of the most dynamic industries.</p>
+          </section>
+
+          <section>
+            <h2>Ideal For</h2>
+            <ul>
+              {program.recommendedFor.map((item) => (
+                <li>
+                  <svg class="w-5 h-5 text-green-600 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <div class="max-w-3xl mx-auto px-6 pb-16">
+        <div class="bg-off-white/50 rounded-2xl p-6 sm:p-8 flex flex-col gap-6">
+          <div>
+            <h3 class="text-2xl font-semibold text-ink mb-1 sm:mb-2">Ready to Enroll?</h3>
+            <p class="text-muted text-sm">Take the first step towards your aviation career.</p>
+          </div>
+          <a href="/#contact" class="self-start sm:self-end bg-ink text-white text-base font-medium px-6 py-3 rounded-full hover:bg-zinc-700 transition-colors">
+            Apply Now
+          </a>
+        </div>
+      </div>
+    </article>
+
+    <section class="bg-off-white py-20 px-6">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="font-sans font-normal text-2xl md:text-3xl text-ink tracking-tight leading-[1.4] mb-10">
+          Other Programs
+        </h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {otherPrograms.map((p) => (
+            <a href={`/programs/${p.slug}`} class="group">
+              <article class="bg-white rounded-2xl overflow-hidden border border-border h-full flex flex-col">
+                <div class="aspect-[16/10] bg-ink/5 flex items-center justify-center">
+                  <svg class="w-10 h-10 text-ink/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25" />
+                  </svg>
+                </div>
+                <div class="p-6 flex flex-col flex-1">
+                  <h3 class="font-sans font-medium text-base text-ink leading-snug mb-3 group-hover:text-muted transition-colors">
+                    {p.name}
+                  </h3>
+                  <span class="text-sm text-muted mt-auto inline-flex items-center gap-1">
+                    Learn more
+                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </article>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+
+  <Footer />
+</Layout>
+
+<style>
+  .prose-program :global(h2) {
+    font-family: 'Figtree', system-ui, sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #0A0A0A;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+  }
+
+  .prose-program :global(p) {
+    color: #666666;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .prose-program :global(ul) {
+    color: #666666;
+    line-height: 1.8;
+    padding-left: 0;
+    list-style: none;
+  }
+
+  .prose-program :global(li) {
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .prose-program :global(strong) {
+    color: #0A0A0A;
+    font-weight: 600;
+  }
+</style>
