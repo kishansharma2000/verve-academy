@@ -6,6 +6,7 @@ interface Props {
   description?: string;
   image?: string;
   canonicalURL?: string;
+  schema?: object;
 }
 
 const { 
@@ -42,6 +43,45 @@ const ogImage = new URL(image, Astro.site || Astro.url.origin).href;
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Vervve Academy",
+        "url": "https://verveacademy.com",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://verveacademy.com/?s={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "EducationalOrganization",
+        "name": "Vervve Academy",
+        "description": "Aviation institute offering diploma and certification courses in airport management, cabin crew, and airline customer service.",
+        "url": "https://verveacademy.com",
+        "telephone": "+919620001901",
+        "email": "enquiry@vervveacademy.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "No.520/432, Pyramid north square, 4th Floor, New airport road",
+          "addressLocality": "Yelahanka, Bangalore",
+          "addressRegion": "Karnataka",
+          "postalCode": "562157",
+          "addressCountry": "IN"
+        },
+        "areaServed": "IN",
+        "sameAs": []
+      }
+    </script>
   </head>
   <body class="pt-[60px]">
     <slot />
