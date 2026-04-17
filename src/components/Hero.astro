@@ -28,28 +28,35 @@
       </div>
 
       <div class="hidden lg:block lg:absolute lg:left-[45%] lg:top-0 lg:w-[50%]">
-        <img 
-          src="/Hero-desktop.webp" 
-          alt="Vervve Academy Aviation Training" 
-          class="w-full h-[750px] object-contain"
-          loading="eager"
-          fetchpriority="high"
-          decoding="async"
-          width="1600"
-          height="750"
-        />
+        <picture>
+          <source srcset="/Hero-desktop.webp" media="(min-width: 1024px)" />
+          <img 
+            src="/Hero-desktop.webp" 
+            alt="Vervve Academy Aviation Training" 
+            class="w-full h-[750px] object-contain"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="1600"
+            height="750"
+          />
+        </picture>
       </div>
       
       <div class="lg:hidden">
-        <img 
-          src="/Hero-mobile.webp" 
-          alt="Vervve Academy Aviation Training" 
-          class="w-full h-[250px] object-contain"
-          loading="lazy"
-          decoding="async"
-          width="800"
-          height="250"
-        />
+        <picture>
+          <source srcset="/Hero-mobile.webp" media="(max-width: 1023px)" />
+          <img 
+            src="/Hero-mobile.webp" 
+            alt="Vervve Academy Aviation Training" 
+            class="w-full h-[250px] object-contain"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            width="800"
+            height="250"
+          />
+        </picture>
       </div>
 
     </div>
