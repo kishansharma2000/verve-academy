@@ -32,7 +32,8 @@ const ogImage = new URL(image, Astro.site || Astro.url.origin).href;
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preload" href="/Hero-mobile.webp" as="image" media="(max-width: 1023px)" />
     <link rel="preload" href="/Hero-desktop.webp" as="image" media="(min-width: 1024px)" />
-    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
     <title>{title}</title>
 
     <meta property="og:title" content={title} />
@@ -47,42 +48,21 @@ const ogImage = new URL(image, Astro.site || Astro.url.origin).href;
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json">
+    <script type="application/ld+json" defer>
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "name": "Vervve Academy",
-        "url": "https://verveacademy.com",
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": {
-            "@type": "EntryPoint",
-            "urlTemplate": "https://verveacademy.com/?s={search_term_string}"
-          },
-          "query-input": "required name=search_term_string"
-        }
+        "url": "https://verveacademy.com"
       }
     </script>
-
-    <script type="application/ld+json">
+    <script type="application/ld+json" defer>
       {
         "@context": "https://schema.org",
         "@type": "EducationalOrganization",
         "name": "Vervve Academy",
-        "description": "Aviation institute offering diploma and certification courses in airport management, cabin crew, and airline customer service.",
         "url": "https://verveacademy.com",
-        "telephone": "+919620001901",
-        "email": "enquiry@vervveacademy.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "No.520/432, Pyramid north square, 4th Floor, New airport road",
-          "addressLocality": "Yelahanka, Bangalore",
-          "addressRegion": "Karnataka",
-          "postalCode": "562157",
-          "addressCountry": "IN"
-        },
-        "areaServed": "IN",
-        "sameAs": []
+        "telephone": "+919620001901"
       }
     </script>
   </head>
