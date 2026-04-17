@@ -5,35 +5,30 @@ const features = [
     title: "DGCA Approved",
     description:
       "Fully certified by India's aviation authority. Your license recognized nationwide.",
-    image: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=900&q=80",
   },
   {
     id: "02",
     title: "Modern Fleet & Simulators",
     description:
       "Industry-standard aircraft and full-motion simulators used by commercial airlines.",
-    image: "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=900&q=80",
   },
   {
     id: "03",
     title: "Expert Faculty",
     description:
       "Learn from active commercial pilots and seasoned industry veterans.",
-    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=900&q=80",
   },
   {
     id: "04",
     title: "100% Placement Assistance",
     description:
       "Dedicated career cell with direct airline connections.",
-    image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=900&q=80",
   },
   {
     id: "05",
     title: "International Exposure",
     description:
       "Exchange programs and globally recognized certifications.",
-    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=900&q=80",
   },
 ];
 ---
@@ -57,7 +52,7 @@ const features = [
             <button
               class="w-full py-7 px-6 flex items-start gap-6 text-left"
             >
-              <span class="text-[11px] font-medium text-muted tracking-widest shrink-0 mt-0.5">
+              <span class="text-[11px] font-medium text-aviation tracking-widest shrink-0 mt-0.5">
                 {feature.id}
               </span>
               <div class="flex-1">
@@ -68,7 +63,7 @@ const features = [
                   {feature.description}
                 </p>
               </div>
-              <span class="feature-icon text-muted text-xl shrink-0">
+              <span class="feature-icon text-aviation text-xl shrink-0">
                 +
               </span>
             </button>
@@ -78,43 +73,28 @@ const features = [
     </div>
 
     <div class="lg:sticky lg:top-24 lg:self-start lg:h-[640px] rounded-[12px] overflow-hidden">
-      <div id="features-images" class="relative w-full h-full">
-        {features.map((feature, index) => (
-          <img
-            key={feature.id}
-            data-index={index}
-            src={feature.image}
-            alt={feature.title}
-            class="feature-img absolute inset-0 w-full h-full object-cover transition-opacity duration-500 opacity-0"
-          />
-        ))}
-      </div>
+      <img 
+        src="/Hero-desktop.webp" 
+        alt="Vervve Academy Aviation Training" 
+        class="w-full h-full object-cover"
+      />
     </div>
 
   </div>
 </section>
 
-<script defer>
+<script>
   const featuresList = document.getElementById('features-list');
   const featureItems = featuresList?.querySelectorAll('li');
-  const featureImages = document.querySelectorAll('.feature-img');
   const featureDescs = document.querySelectorAll('.feature-desc');
   const featureIcons = document.querySelectorAll('.feature-icon');
-  let activeIndex = 0;
 
   function setActive(index: number) {
-    activeIndex = index;
-    
-    featureImages.forEach((img, i) => {
-      img.classList.toggle('opacity-100', i === index);
-      img.classList.toggle('opacity-0', i !== index);
-    });
-
     featureItems?.forEach((item, i) => {
       if (i === index) {
-        item.classList.add('shadow-sm');
+        item.classList.add('shadow-sm', 'ring-2', 'ring-aviation/20');
       } else {
-        item.classList.remove('shadow-sm');
+        item.classList.remove('shadow-sm', 'ring-2', 'ring-aviation/20');
       }
     });
 
@@ -136,8 +116,4 @@ const features = [
   });
 
   setActive(0);
-
-  setInterval(() => {
-    setActive((activeIndex + 1) % 5);
-  }, 5000);
 </script>
