@@ -27,11 +27,24 @@
         </div>
       </div>
 
-      <div class="block lg:absolute lg:left-[45%] lg:top-0 lg:w-[50%]">
+      <div class="hidden lg:block lg:absolute lg:left-[45%] lg:top-0 lg:w-[50%]">
         <img 
           src="/Hero.webp" 
           alt="Vervve Academy Aviation Training" 
-          class="w-full h-[300px] md:h-[500px] lg:h-[750px] object-contain"
+          class="w-full h-[750px] object-contain"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+        />
+      </div>
+      
+      <div class="lg:hidden">
+        <img 
+          src="/Hero.webp" 
+          alt="Vervve Academy Aviation Training" 
+          class="w-full h-[250px] object-contain"
+          loading="lazy"
+          decoding="async"
         />
       </div>
 
