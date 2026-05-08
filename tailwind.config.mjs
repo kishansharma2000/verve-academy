@@ -8,14 +8,24 @@ export default {
       fontFamily: {
         sans: ['Figtree', 'system-ui', 'sans-serif'],
         display: ['Figtree', 'system-ui', 'sans-serif'],
+        body: ['Figtree', 'system-ui', 'sans-serif'],
       },
       colors: {
-        ink: '#0A0A0A',
-        muted: '#666666',
-        border: '#E5E5E5',
-        'off-white': '#F7F7F5',
-        aviation: '#0066CC',
-        'aviation-light': '#E6F0FA',
+        // Vervve Brand Palette
+        navy: '#0B1F45',
+        'sky-brand': '#1A6CB4',
+        gold: '#E8A020',
+        'off-white': '#F4F7FC',
+        'light-gray': '#E8EDF5',
+        'mid-gray': '#8A97AD',
+        'dark-gray': '#2C3A52',
+
+        // Semantic aliases — keep existing class names working, remapped to brand
+        ink: '#0B1F45',           // Deep Navy → headings, primary text
+        muted: '#5A6779',         // Navy-tinted body gray
+        border: '#E8EDF5',        // Light gray
+        aviation: '#1A6CB4',      // Sky Blue → CTAs / interactive
+        'aviation-light': '#E8EDF5',
       },
     },
   },

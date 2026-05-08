@@ -1,4 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="4" fill="#0A0A0A"/>
-  <text x="16" y="22" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="white" text-anchor="middle">V</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 102">
+  <!-- Vervve Ascent Mark — favicon (icon-only, simplified per brand min-size rules) -->
+  <rect width="80" height="102" fill="#0B1F45"/>
+  <!-- Left arm — Deep Navy on Navy bg, render as white for visibility at small size -->
+  <polygon points="14,28 34,28 44,90 30,90" fill="#FFFFFF"/>
+  <!-- Right arm — Sky Blue -->
+  <polygon points="46,28 66,28 50,90 36,90" fill="#1A6CB4"/>
+  <!-- Gold navigation tip -->
+  <polygon points="34,90 46,90 40,102" fill="#E8A020"/>
 </svg>

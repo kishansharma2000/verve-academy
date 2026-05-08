@@ -7,24 +7,24 @@ const stats = [
 ];
 ---
 
-<section class="py-20 px-6" style={{ backgroundColor: '#0A0A0A' }}>
+<section class="py-24 px-6" style={{ backgroundColor: '#0B1F45' }}>
   <div class="max-w-6xl mx-auto">
 
     <div class="flex flex-wrap justify-center gap-12 md:gap-24 mb-16">
       {stats.map((stat) => (
         <div class="text-center">
-          <div class="font-sans font-normal text-aviation text-5xl md:text-8xl leading-[1.2] tracking-tighter">
+          <div class="font-sans font-medium text-5xl md:text-8xl leading-[1.0] tracking-[-0.04em]" style={{ color: '#E8A020' }}>
             {stat.number}
           </div>
-          <div class="text-[11px] uppercase tracking-widest text-white/60 mt-2">
+          <div class="text-[11px] uppercase tracking-[0.28em] text-white/70 mt-3 font-semibold">
             {stat.label}
           </div>
         </div>
       ))}
     </div>
 
-    <p class="font-sans font-normal text-white text-2xl md:text-4xl max-w-2xl mx-auto text-center leading-relaxed">
-      &ldquo;We don&rsquo;t just teach aviation.<br />We build careers.&rdquo;
+    <p class="font-sans font-medium text-white text-2xl md:text-4xl max-w-2xl mx-auto text-center leading-[1.3] tracking-[-0.02em]">
+      &ldquo;We don&rsquo;t just teach aviation.<br /><span class="italic font-normal" style={{ color: '#E8A020' }}>We build careers.</span>&rdquo;
     </p>
 
   </div>
