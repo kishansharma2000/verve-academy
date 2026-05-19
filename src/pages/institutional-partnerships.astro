@@ -1,0 +1,518 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const partnerInstitutions = [
+  {
+    name: 'REVA University',
+    program: 'BBA in Aviation Management (in association with Vervve Academy)',
+    students: '200+ annually',
+    duration: 'Integrated degree program',
+    highlight: '95% placement',
+  },
+  {
+    name: 'Koshys Group of Institutions',
+    program: 'Aviation & Hospitality Skill Development',
+    students: '150+ per batch',
+    duration: 'Semester-based training modules',
+    highlight: 'Cabin crew and airport operations',
+  },
+  {
+    name: 'Harsha Institutions',
+    program: 'Aviation Career Readiness Program',
+    students: '100+ students',
+    duration: '6-12 month certification',
+    highlight: 'Ground staff and customer service roles',
+  },
+  {
+    name: 'HKBK College of Engineering',
+    program: 'Aviation Management Elective Courses',
+    students: '80+ students',
+    duration: 'Modular training (50-100 hours)',
+    highlight: 'Engineering + aviation dual skillset',
+  },
+];
+
+const partnershipModels = [
+  {
+    title: 'Integrated Degree Programs',
+    for: 'Universities offering aviation-related degrees',
+    delivery: 'Co-branded degree/diploma programs',
+    duration: '3-4 years (degree level)',
+    role: 'Curriculum design, faculty training, practical sessions, placement support',
+    example: 'REVA University’s BBA Aviation Management',
+  },
+  {
+    title: 'Add-On Certification Programs',
+    for: 'Colleges wanting to enhance student employability',
+    delivery: 'Semester-based or summer training modules',
+    duration: '6-12 months',
+    role: 'Specialized aviation training, industry certifications, job readiness',
+    example: 'Koshys & Harsha skill development programs',
+  },
+  {
+    title: 'Campus Training Programs',
+    for: 'Institutions seeking on-campus aviation training',
+    delivery: 'Faculty visits campus or students visit Vervve facility',
+    duration: 'Flexible (50-200 hours)',
+    role: 'Customized curriculum, guest lectures, workshops',
+    example: 'HKBK elective courses',
+  },
+];
+
+const offerings = [
+  {
+    title: 'DGCA-Aligned Curriculum',
+    points: ['Industry-standard course content', 'Regular updates matching aviation trends', 'Compliance with regulatory requirements'],
+  },
+  {
+    title: 'Expert Faculty & Guest Lecturers',
+    points: ['Ex-airline professionals as trainers', 'Industry guest speakers from airlines', 'Real-world case study sessions'],
+  },
+  {
+    title: 'State-of-the-Art Infrastructure',
+    points: ['Aircraft cabin simulators', 'GDS computer labs', 'Safety equipment training facilities'],
+  },
+  {
+    title: 'Practical Training & Industrial Exposure',
+    points: ['Bangalore Airport visits', 'Airline office tours', 'Live operational demonstrations', 'Internship coordination'],
+  },
+  {
+    title: 'Placement Assistance',
+    points: ['Dedicated placement drives for your students', 'Resume building workshops', 'Mock interviews with airline recruiters', 'Direct airline referrals'],
+  },
+  {
+    title: 'Certification & Branding',
+    points: ['Co-branded certificates (Institution + Vervve)', 'Digital badges for student portfolios', 'Industry-recognized credentials'],
+  },
+];
+
+const testimonials = [
+  {
+    quote: 'The partnership between REVA and Vervve gave me the perfect blend of academic knowledge and practical aviation skills. The hands-on training at Vervve’s facility and direct airline interviews helped me secure my dream job within 2 months of graduation.',
+    name: 'Ananya Iyer',
+    detail: 'REVA University, BBA Aviation Management 2025 · Cabin Crew, IndiGo Airlines',
+  },
+  {
+    quote: 'As a commerce student, I never thought I’d work in aviation. Koshys’ partnership with Vervve opened doors I didn’t know existed. The GDS training and airport visits were game-changers for my career.',
+    name: 'Rohan Desai',
+    detail: 'Koshys Group, Aviation Certification 2024 · Airport Operations Executive, BIAL',
+  },
+  {
+    quote: 'Vervve’s trainers came directly to our campus, making it convenient to pursue aviation training alongside my degree. The placement support was exceptional — I attended 5 airline interviews organized by Vervve!',
+    name: 'Meera Kulkarni',
+    detail: 'Harsha Institutions, 2025 · Customer Service Manager, Air India',
+  },
+];
+
+const placementStats = [
+  { institution: 'REVA University', students: '210', rate: '95%', recruiters: 'IndiGo, Air India, Vistara' },
+  { institution: 'Koshys Group', students: '165', rate: '92%', recruiters: 'BIAL, SpiceJet, Emirates' },
+  { institution: 'Harsha Institutions', students: '120', rate: '89%', recruiters: 'Air India, GoAir, Swissport' },
+  { institution: 'HKBK College', students: '85', rate: '90%', recruiters: 'IndiGo, BIAL, Celebi' },
+];
+
+const processSteps = [
+  { step: '01', title: 'Initial Consultation', desc: 'Schedule meeting with the Vervve partnership team. Discuss your institution’s goals and student demographics. Understand program options and partnership models.' },
+  { step: '02', title: 'Customized Proposal', desc: 'Receive tailored training program design. Review curriculum, duration, and delivery mode. Evaluate fee structure and revenue-sharing model.' },
+  { step: '03', title: 'MOU & Agreement', desc: 'Formalize partnership through a Memorandum of Understanding. Define roles, responsibilities, and expectations. Set success metrics and placement targets.' },
+  { step: '04', title: 'Faculty Training & Setup', desc: 'Vervve trains your faculty (if on-campus delivery). Infrastructure setup or schedule student visits. Marketing collateral and co-branding materials.' },
+  { step: '05', title: 'Program Launch', desc: 'Student enrollment and batch formation. Regular quality monitoring and feedback. Continuous improvement and updates.' },
+  { step: '06', title: 'Placement & Alumni Support', desc: 'Organize campus recruitment drives. Track student placement success. Build long-term alumni network.' },
+];
+
+const pricingOptions = [
+  {
+    title: 'Per-Student Fee Model',
+    points: ['Institution enrolls students; Vervve provides training', 'Fee: ₹50,000 – ₹1,50,000 per student (program-based)', 'Institution can add markup for administrative costs'],
+  },
+  {
+    title: 'Revenue Sharing Model',
+    points: ['Co-branded program; both parties market to students', 'Revenue split: 60-40 or negotiable', 'Shared investment in infrastructure and marketing'],
+  },
+  {
+    title: 'Annual Contract Model',
+    points: ['Fixed annual fee for unlimited student batches', 'Ideal for large universities with high volumes', 'Custom pricing based on student numbers'],
+  },
+];
+---
+
+<Layout
+  title="Institutional Partnerships | Vervve Aviation Academy"
+  description="Aviation training programs for colleges and universities in Bangalore. Trusted by REVA University, Koshys, Harsha Institutions & HKBK. DGCA-aligned curriculum, 92%+ placement rates, co-branded certifications."
+>
+  <Navbar />
+
+  <main>
+    <!-- Hero -->
+    <section class="bg-white">
+      <div class="w-full px-6 py-16 md:py-24 max-w-6xl mx-auto">
+        <p class="label mb-5">B2B · Educational Partnerships</p>
+        <h1 class="font-sans font-light text-[2.25rem] leading-[1.1] sm:text-5xl md:text-[3.5rem] lg:text-[4rem] tracking-[-0.025em] text-ink max-w-4xl">
+          Aviation Training Programs for{' '}
+          <span class="text-aviation font-medium">Educational Institutions</span> in Bangalore
+        </h1>
+        <p class="text-muted text-base md:text-lg leading-relaxed mt-6 max-w-2xl">
+          Empowering students from leading colleges with industry-ready aviation skills. Trusted by REVA University, Koshys Group, Harsha Institutions and HKBK College of Engineering.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12 max-w-3xl">
+          <div>
+            <p class="font-sans font-medium text-3xl md:text-4xl text-ink tracking-tight">4+</p>
+            <p class="text-xs uppercase tracking-widest text-muted mt-2">College Partnerships</p>
+          </div>
+          <div>
+            <p class="font-sans font-medium text-3xl md:text-4xl text-ink tracking-tight">500+</p>
+            <p class="text-xs uppercase tracking-widest text-muted mt-2">Students Trained Annually</p>
+          </div>
+          <div>
+            <p class="font-sans font-medium text-3xl md:text-4xl text-ink tracking-tight">92%</p>
+            <p class="text-xs uppercase tracking-widest text-muted mt-2">Placement Success Rate</p>
+          </div>
+          <div>
+            <p class="font-sans font-medium text-3xl md:text-4xl text-ink tracking-tight">DGCA</p>
+            <p class="text-xs uppercase tracking-widest text-muted mt-2">Aligned Curriculum</p>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap gap-4 mt-12">
+          <a href="#partnership-contact" class="inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-full transition-colors hover:opacity-90" style={{ backgroundColor: '#1A6CB4', color: '#FFFFFF', letterSpacing: '0.02em' }}>
+            Partner with Vervve Academy
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href="#partnership-contact" class="inline-block font-semibold text-sm px-8 py-3.5 rounded-full border transition-colors hover:bg-ink hover:text-white" style={{ borderColor: '#C8D2E0', color: '#0B1F45', letterSpacing: '0.02em' }}>Schedule Institutional Demo</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partner Institutions -->
+    <section class="bg-off-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">OUR PARTNERS</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Trusted by Bangalore's Premier Educational Institutions
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {partnerInstitutions.map((p) => (
+            <article class="bg-white rounded-2xl p-8 border border-border">
+              <h3 class="font-sans font-medium text-xl text-ink mb-3">{p.name}</h3>
+              <p class="text-muted text-sm leading-relaxed mb-5">{p.program}</p>
+              <dl class="grid grid-cols-2 gap-4 pt-5 border-t border-border">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Students</dt>
+                  <dd class="text-ink text-sm font-medium mt-1">{p.students}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Duration</dt>
+                  <dd class="text-ink text-sm font-medium mt-1">{p.duration}</dd>
+                </div>
+                <div class="col-span-2">
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Highlight</dt>
+                  <dd class="text-ink text-sm font-medium mt-1">{p.highlight}</dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnership Models -->
+    <section class="bg-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">PARTNERSHIP MODELS</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Flexible Training Solutions Tailored to Your Institution's Needs
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {partnershipModels.map((m, i) => (
+            <article class="bg-off-white rounded-2xl p-8 flex flex-col">
+              <span class="text-[11px] font-bold tracking-[0.28em] mb-4" style={{ color: '#E8A020' }}>
+                MODEL {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-sans font-medium text-xl text-ink mb-4">{m.title}</h3>
+              <dl class="space-y-3 text-sm">
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">For</dt>
+                  <dd class="text-ink mt-1">{m.for}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Delivery</dt>
+                  <dd class="text-ink mt-1">{m.delivery}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Duration</dt>
+                  <dd class="text-ink mt-1">{m.duration}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Vervve's Role</dt>
+                  <dd class="text-muted mt-1 leading-relaxed">{m.role}</dd>
+                </div>
+                <div>
+                  <dt class="text-[10px] uppercase tracking-widest text-muted">Example</dt>
+                  <dd class="text-ink mt-1">{m.example}</dd>
+                </div>
+              </dl>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 text-center">
+          <a href="#partnership-contact" class="inline-flex items-center gap-2 font-semibold text-sm px-8 py-3.5 rounded-full transition-colors hover:opacity-90" style={{ backgroundColor: '#1A6CB4', color: '#FFFFFF', letterSpacing: '0.02em' }}>
+            Discuss Partnership Model
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer -->
+    <section class="bg-off-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">WHAT WE OFFER</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          A Comprehensive Aviation Training Ecosystem for Your Students
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {offerings.map((o, i) => (
+            <article class="bg-white rounded-2xl p-7 border border-border">
+              <span class="text-[11px] font-bold tracking-[0.28em]" style={{ color: '#E8A020' }}>
+                {String(i + 1).padStart(2, '0')}
+              </span>
+              <h3 class="font-sans font-medium text-lg text-ink mt-3 mb-4">{o.title}</h3>
+              <ul class="space-y-2">
+                {o.points.map((pt) => (
+                  <li class="text-muted text-sm leading-relaxed flex items-start gap-2">
+                    <svg class="w-4 h-4 text-aviation flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="bg-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">STUDENT SUCCESS</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Where Our Partner Students Are Working Today
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {testimonials.map((t) => (
+            <article class="bg-off-white rounded-2xl p-8 border border-border">
+              <p class="font-sans font-medium text-base text-ink leading-relaxed mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div class="pt-5 border-t border-border">
+                <p class="font-medium text-ink text-sm">{t.name}</p>
+                <p class="text-xs text-muted mt-1 leading-relaxed">{t.detail}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Placement Statistics -->
+    <section class="py-24 px-6" style={{ backgroundColor: '#0B1F45' }}>
+      <div class="max-w-6xl mx-auto">
+        <p class="text-[11px] uppercase tracking-[0.28em] font-semibold mb-6" style={{ color: '#E8A020' }}>
+          PLACEMENT STATISTICS 2024-25
+        </p>
+        <h2 class="font-sans font-medium text-white text-2xl md:text-3xl lg:text-4xl tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Real Placements. Real Outcomes.
+        </h2>
+
+        <div class="overflow-x-auto -mx-6 px-6">
+          <table class="w-full min-w-[640px] text-sm">
+            <thead>
+              <tr class="border-b border-white/15">
+                <th class="text-left py-4 px-4 font-medium text-white/70 text-[11px] uppercase tracking-widest">Institution</th>
+                <th class="text-left py-4 px-4 font-medium text-white/70 text-[11px] uppercase tracking-widest">Students Trained</th>
+                <th class="text-left py-4 px-4 font-medium text-white/70 text-[11px] uppercase tracking-widest">Placement Rate</th>
+                <th class="text-left py-4 px-4 font-medium text-white/70 text-[11px] uppercase tracking-widest">Top Recruiters</th>
+              </tr>
+            </thead>
+            <tbody>
+              {placementStats.map((s) => (
+                <tr class="border-b border-white/10">
+                  <td class="py-4 px-4 text-white font-medium">{s.institution}</td>
+                  <td class="py-4 px-4 text-white/80">{s.students}</td>
+                  <td class="py-4 px-4 font-medium" style={{ color: '#E8A020' }}>{s.rate}</td>
+                  <td class="py-4 px-4 text-white/80">{s.recruiters}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Partner -->
+    <section class="bg-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">THE VERVVE ADVANTAGE</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Why Partner with Vervve Academy?
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-off-white rounded-2xl p-8">
+            <h3 class="font-sans font-medium text-xl text-ink mb-5">For Your Institution</h3>
+            <ul class="space-y-3">
+              {['Enhance curriculum with industry-aligned aviation programs', 'Improve student placement rates (92%+ average)', 'Attract quality students seeking aviation careers', 'Co-branding opportunities with an established aviation brand', 'No infrastructure investment required', 'Flexible delivery models (on-campus/off-campus)', 'NAAC/NBA accreditation support through skill partnerships'].map((item) => (
+                <li class="text-muted text-sm leading-relaxed flex items-start gap-2">
+                  <svg class="w-4 h-4 text-aviation flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-off-white rounded-2xl p-8">
+            <h3 class="font-sans font-medium text-xl text-ink mb-5">For Your Students</h3>
+            <ul class="space-y-3">
+              {['Direct pathway to airline and airport careers', 'Hands-on training with real equipment', 'Industry certifications alongside degrees', 'Networking with aviation professionals', 'Placement support from an established academy', 'Competitive salary packages (₹3–8 LPA average)'].map((item) => (
+                <li class="text-muted text-sm leading-relaxed flex items-start gap-2">
+                  <svg class="w-4 h-4 text-aviation flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Partnership Process -->
+    <section class="bg-off-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">PARTNERSHIP PROCESS</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-4 max-w-3xl">
+          How to Become a Vervve Partner Institution
+        </h2>
+        <p class="text-muted text-sm md:text-base mb-12 max-w-2xl">From consultation to program launch: 4&ndash;6 weeks</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {processSteps.map((s) => (
+            <article class="bg-white rounded-2xl p-7 border border-border">
+              <span class="text-[11px] font-bold tracking-[0.28em]" style={{ color: '#E8A020' }}>
+                STEP {s.step}
+              </span>
+              <h3 class="font-sans font-medium text-lg text-ink mt-3 mb-3">{s.title}</h3>
+              <p class="text-muted text-sm leading-relaxed">{s.desc}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="bg-white py-24 px-6">
+      <div class="max-w-6xl mx-auto">
+        <p class="label mb-6">INVESTMENT & RETURNS</p>
+        <h2 class="font-sans font-medium text-2xl md:text-3xl lg:text-4xl text-ink tracking-tight lg:leading-[1.3] mb-12 max-w-3xl">
+          Transparent Partnership Pricing
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {pricingOptions.map((p, i) => (
+            <article class="bg-off-white rounded-2xl p-8 flex flex-col">
+              <span class="text-[11px] font-bold tracking-[0.28em] mb-3" style={{ color: '#E8A020' }}>
+                OPTION {String.fromCharCode(65 + i)}
+              </span>
+              <h3 class="font-sans font-medium text-lg text-ink mb-4">{p.title}</h3>
+              <ul class="space-y-2 flex-1">
+                {p.points.map((pt) => (
+                  <li class="text-muted text-sm leading-relaxed flex items-start gap-2">
+                    <svg class="w-4 h-4 text-aviation flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div class="mt-12 bg-off-white rounded-2xl p-8 border border-border">
+          <h3 class="font-sans font-medium text-lg text-ink mb-4">ROI for Institutions</h3>
+          <ul class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {['Increased student enrollments (15-25% avg growth)', 'Higher placement rates improve rankings', 'Additional revenue stream from skill programs', 'Enhanced institutional reputation'].map((item) => (
+              <li class="text-muted text-sm leading-relaxed flex items-start gap-2">
+                <svg class="w-4 h-4 text-aviation flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="partnership-contact" class="py-24 px-6 relative overflow-hidden" style={{ backgroundColor: '#0B1F45' }}>
+      <div class="absolute top-0 left-0 right-0 h-[3px]" style={{ backgroundColor: '#E8A020' }}></div>
+
+      <div class="max-w-3xl mx-auto text-center relative z-10">
+        <p class="text-[11px] uppercase tracking-[0.28em] font-semibold" style={{ color: '#E8A020' }}>
+          Partnership Enquiries
+        </p>
+
+        <h2 class="font-sans font-medium text-white text-3xl md:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1] mt-5">
+          Ready to enhance your institution's<br />
+          <span class="font-medium" style={{ color: '#5BA8E5' }}>aviation offerings?</span>
+        </h2>
+
+        <div class="mt-10 grid grid-cols-1 md:grid-cols-2 gap-4 text-left bg-white/5 rounded-2xl p-8 border border-white/10">
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-white/60">Email</p>
+            <a href="mailto:partnerships@vervveacademy.com" class="text-white hover:text-aviation transition-colors text-sm md:text-base mt-1 block break-all">
+              partnerships@vervveacademy.com
+            </a>
+          </div>
+          <div>
+            <p class="text-[10px] uppercase tracking-widest text-white/60">Phone</p>
+            <a href="tel:+919620001901" class="text-white hover:text-aviation transition-colors text-sm md:text-base mt-1 block">
+              +91 96200 01901 (Ext: 102)
+            </a>
+          </div>
+          <div class="md:col-span-2">
+            <p class="text-[10px] uppercase tracking-widest text-white/60">Office</p>
+            <p class="text-white text-sm md:text-base mt-1">
+              Vervve Aviation Academy, Pyramid North Square, 4th Floor, New Airport Road, Yelahanka, Bangalore &ndash; 562157, Karnataka
+            </p>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap gap-4 justify-center">
+          <a href="mailto:partnerships@vervveacademy.com" class="inline-block font-semibold text-base md:text-lg px-10 py-4 rounded-full transition-colors" style={{ backgroundColor: '#E8A020', color: '#0B1F45', letterSpacing: '0.01em' }}>
+            Start Partnership Conversation
+          </a>
+          <a href="tel:+919620001901" class="inline-block font-semibold text-base md:text-lg px-10 py-4 rounded-full border-[1.5px] border-white/50 text-white hover:bg-white hover:text-ink transition-colors" style={{ letterSpacing: '0.01em' }}>
+            Call Partnership Team
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

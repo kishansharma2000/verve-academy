@@ -2,6 +2,7 @@
 const navLinks = [
   { label: 'Home', href: '/' },
   { label: 'Programs', href: '/#programs' },
+  { label: 'For Institutions', href: '/institutional-partnerships' },
   { label: 'Blog', href: '/blog' },
   { label: 'Contact', href: '/#contact' },
 ];
@@ -21,7 +22,7 @@ const navLinks = [
         </span>
       </a>
 
-      <ul class="hidden md:flex items-center gap-8">
+      <ul class="hidden md:flex items-center gap-6">
         {navLinks.map((link) => (
           <li key={link.label}>
             <a
